@@ -13,3 +13,7 @@ bld/
 [Oo]bj/
 [Ll]og/
 [Ll]ogs/
+*.exe
+*.obj
+*.crf
+*.lst
