@@ -28,17 +28,14 @@ mov bx, cs:licznik
 ; przesłanie do pamięci ekranu kodu ASCII wyświetlanego znaku
 ; i kodu koloru: biały na czarnym tle (do następnego bajtu)
 mov si, cs:licznik_sekwencji
-cmp cs:licznik_sekwencji, 11
-jb standard
-mov si, 0
-standard:
 mov al, cs:sekwencja[si]
 mov byte PTR es:[bx], al ; kod ASCII
 mov byte PTR es:[bx+1], 00000111B ; kolor
 ; zwiększenie o 2 adresu bieżącego w pamięci ekranu
-cmp cs:licznik_sekwencji, 12
+cmp cs:licznik_sekwencji, 11
 jb dalej
 add bx,160
+mov cs:licznik_sekwencji, dword ptr -1
 inc cs:licznik_linii
 dalej:
 ; sprawdzenie czy adres bieżący osiągnął koniec pamięci ekranu
